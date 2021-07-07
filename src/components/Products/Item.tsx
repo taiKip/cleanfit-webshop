@@ -15,7 +15,7 @@ const Item = ({ item }: { item: IProduct }) => {
     return (
         <li className={classes.item}>
             <div className={classes.image}>
-                <img src={item.image} />
+                <img src={item.image} alt={item.title}/>
             </div>
             <div className={classes.description}>
                 <h3>{item.title}</h3>

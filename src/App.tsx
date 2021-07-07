@@ -11,7 +11,7 @@ import SearchContextProvider from "./components/contexts/SearchContextProvider";
 const queryClient = new QueryClient();
 const App = () => {
   const [showModal, setShowModal] = useState(false);
-  const [searchItem,setSearchItem] = useState('')
+
   const handleToggle = () => {
     setShowModal(prev=>!prev)
   }
