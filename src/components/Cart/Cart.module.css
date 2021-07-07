@@ -1,0 +1,10 @@
+.cart{
+    list-style: none;
+    cursor: pointer;
+    margin:20px 0;
+
+}
+.total{
+    padding: 20px;
+    margin-bottom: 20px;
+}

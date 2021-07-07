@@ -1,0 +1,8 @@
+.item{
+    min-width: 350px;
+    height: 600px;
+   overflow: hidden;
+    border-radius: 20px;
+    background: rgba(128, 128, 128, 0.548);
+    position: relative;
+}

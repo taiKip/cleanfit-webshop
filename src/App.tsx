@@ -1,26 +1,37 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./App.css";
+import Navbar from "./components/Navigation/Navbar";
+import { QueryClientProvider, QueryClient } from "react-query";
+import Products from "./components/Products/Products";
+import Modal from "./components/UI/Modal";
+import Cart from "./components/Cart/Cart";
+import CartContextProvider from "./components/contexts/CartContextProvider";
+import SearchContextProvider from "./components/contexts/SearchContextProvider";
 
-function App() {
+const queryClient = new QueryClient();
+const App = () => {
+  const [showModal, setShowModal] = useState(false);
+  const [searchItem,setSearchItem] = useState('')
+  const handleToggle = () => {
+    setShowModal(prev=>!prev)
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <QueryClientProvider client={queryClient}>
+        <CartContextProvider>
+          <SearchContextProvider>
+          {showModal && (
+            <Modal toggle={handleToggle}>
+              <Cart />
+            </Modal>
+          )}
+          <Navbar toggle={handleToggle} />
+            <Products />
+          </SearchContextProvider>
+        </CartContextProvider>
+      </QueryClientProvider>
     </div>
   );
-}
+};
 
 export default App;
